@@ -25,31 +25,5 @@ public class Product {
 
     private String description;
 
-    private int quantity;
-
-    public Product(String productNumber, String productName, Category category, String description, int i) {
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class ProductCreateModel {
-        private String productNumber;
-        private String productName;
-        private Category category;
-        private String description;
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class ProductUpdateModel {
-        private String productName;
-        private String description;
-    }
-    
+    private int quantity = 0;
 }
-
-
