@@ -1,7 +1,7 @@
 package hu.webler.weblerstoragemanager.controller;
 
 import hu.webler.weblerstoragemanager.entity.Product;
-import hu.webler.weblerstoragemanager.enumeratio.Category;
+import hu.webler.weblerstoragemanager.value.Category;
 import hu.webler.weblerstoragemanager.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -56,7 +56,7 @@ public class ProductController {
         List<Product> products = productService.getAllManufacturedItem();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-    // TODO
+
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Product product = productService.getProductById(id);

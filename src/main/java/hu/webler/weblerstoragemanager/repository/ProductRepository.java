@@ -1,7 +1,7 @@
 package hu.webler.weblerstoragemanager.repository;
 
 import hu.webler.weblerstoragemanager.entity.Product;
-import hu.webler.weblerstoragemanager.enumeratio.Category;
+import hu.webler.weblerstoragemanager.value.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

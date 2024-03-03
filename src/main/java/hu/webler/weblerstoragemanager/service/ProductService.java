@@ -1,7 +1,7 @@
 package hu.webler.weblerstoragemanager.service;
 
 import hu.webler.weblerstoragemanager.entity.Product;
-import hu.webler.weblerstoragemanager.enumeratio.Category;
+import hu.webler.weblerstoragemanager.value.Category;
 import hu.webler.weblerstoragemanager.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 

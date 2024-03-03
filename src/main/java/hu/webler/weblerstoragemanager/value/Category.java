@@ -1,4 +1,4 @@
-package hu.webler.weblerstoragemanager.enumeratio;
+package hu.webler.weblerstoragemanager.value;
 
 public enum Category {
     ALAPANYAG,

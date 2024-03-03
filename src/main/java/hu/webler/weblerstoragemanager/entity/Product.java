@@ -1,6 +1,6 @@
 package hu.webler.weblerstoragemanager.entity;
 
-import hu.webler.weblerstoragemanager.enumeratio.Category;
+import hu.webler.weblerstoragemanager.value.Category;
 import jakarta.persistence.*;
 import lombok.*;
 
