@@ -49,16 +49,8 @@ public class ProductService {
         return productRepository.findAllByQuantityGreaterThan(0);
     }
 
-    public List<Product> getAllRawMaterial() {
-        return productRepository.findAllByRawMateril(Category.RAW_MATERIAL);
-    }
-
-    public List<Product> getAllPurchasedItem() {
-        return productRepository.findAllByPurchasedItem(Category.PURCHASED_ITEM);
-    }
-
-    public List<Product> getAllManufacturedItem() {
-        return productRepository.findAllByManufacturedItem(Category.MANUFACTURED_ITEM);
+    public List<Product> getAllByCategory(Category category) {
+        return productRepository.findAllByCategory(category);
     }
 
     public Product getProductById(Long id) {

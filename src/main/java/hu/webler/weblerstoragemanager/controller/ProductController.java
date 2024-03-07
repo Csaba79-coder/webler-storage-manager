@@ -39,12 +39,12 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        return ResponseEntity.status(200).body(products);
     }
 
     @GetMapping("/products/category/{category}")
-    public ResponseEntity<List<Product>> getAllRawMaterial(@PathVariable Category category) {
-        List<Product> products = productService.getAllRawMaterial();
+    public ResponseEntity<List<Product>> getAllByCategory(@PathVariable Category category) {
+        List<Product> products = productService.getAllByCategory(category);
         List<Product> filteredProducts = products.stream()
                 .filter(product -> product.getCategory().equals(category))
                 .toList();
@@ -55,9 +55,9 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Product product = productService.getProductById(id);
         if (product != null) {
-            return new ResponseEntity<>(product, HttpStatus.OK);
+            return ResponseEntity.status(200).body(product);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(404).body(null);
         }
     }
 
@@ -65,16 +65,16 @@ public class ProductController {
     public ResponseEntity<Product> getProductByProductNumber(@PathVariable String productNumber) {
         Product product = productService.getProductByProductNumber(productNumber);
         if (product != null) {
-            return new ResponseEntity<>(product, HttpStatus.OK);
+            return ResponseEntity.status(200).body(product);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(404).body(null);
         }
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.status(204).body(null);
     }
 }
 

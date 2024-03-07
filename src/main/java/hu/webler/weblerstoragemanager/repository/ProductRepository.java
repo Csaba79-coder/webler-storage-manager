@@ -15,9 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Product findByProductNumberAndQuantityGreaterThan(String productNumber, int quantity);
 
-    List<Product> findAllByRawMateril(Category ALAPANYAG);
+    List<Product> findAllByCategory(Category category);
 
-    List<Product> findAllByPurchasedItem(Category VÁSÁROLT_TÉTEL);
-
-    List<Product> findAllByManufacturedItem(Category GYÁRTOTT_TÉTEL);
 }
