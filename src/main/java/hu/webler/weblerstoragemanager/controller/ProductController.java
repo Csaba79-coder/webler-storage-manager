@@ -23,16 +23,16 @@ public class ProductController {
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody ProductCreateModel createModel) {
         Product product = productService.createProduct(createModel);
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
+        return ResponseEntity.status(200).body(product);
     }
 
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateModel updateModel) {
         Product updatedProduct = productService.updateProduct(id, updateModel);
         if (updatedProduct != null) {
-            return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+            return ResponseEntity.status(200).body(updatedProduct);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(404).body(null);
         }
     }
 
