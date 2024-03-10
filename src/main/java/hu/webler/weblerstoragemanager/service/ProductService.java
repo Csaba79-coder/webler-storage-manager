@@ -23,7 +23,7 @@ public class ProductService {
         product.setProductNumber(productCreateModel.getProductNumber());
         product.setProductName(productCreateModel.getProductName());
         product.setCategory(productCreateModel.getCategory());
-        product.setDescription(product.getDescription());
+        product.setDescription(productCreateModel.getDescription());
 
         return productRepository.save(product);
     }
