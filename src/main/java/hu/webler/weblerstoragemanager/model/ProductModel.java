@@ -1,26 +1,23 @@
-package hu.webler.weblerstoragemanager.entity;
+package hu.webler.weblerstoragemanager.model;
 
 import hu.webler.weblerstoragemanager.value.Category;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductModel {
+
     private Long id;
 
-    @Column(unique = true)
     private String productNumber;
 
-    @Column(unique = true)
     private String productName;
 
-    @Enumerated(EnumType.STRING)
     private Category category;
 
     private String description;
