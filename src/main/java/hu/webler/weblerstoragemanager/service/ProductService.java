@@ -57,7 +57,7 @@ public class ProductService {
     }
 
     public ProductModel getProductById(Long id) {
-        return Mapper.mapProductEntityToProductModel(productRepository.findByIdAndHasItemOnStock(id,0)
+        return Mapper.mapProductEntityToProductModel(productRepository.findByIdAndQuantityGreaterThan(id,0)
                 .orElseThrow(() ->{
                     String message = String.format("Product with id: %d not found", id);
                     log.info(message);
@@ -67,7 +67,7 @@ public class ProductService {
 
     public ProductModel getProductByProductNumber(String productNumber) {
         return Mapper.mapProductEntityToProductModel(productRepository
-                .findByProductNumberAndHasItemOnStock(productNumber,0)
+                .findByProductNumberAndQuantityGreaterThan(productNumber,0)
                 .orElseThrow(() ->{
                     String message = String.format("Product with id: %s not found", productNumber);
                     log.info(message);
