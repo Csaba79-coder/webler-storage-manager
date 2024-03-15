@@ -1,17 +1,15 @@
 package hu.webler.weblerstoragemanager.controller;
 
-import hu.webler.weblerstoragemanager.entity.Product;
 import hu.webler.weblerstoragemanager.model.ProductCreateModel;
+import hu.webler.weblerstoragemanager.model.ProductModel;
 import hu.webler.weblerstoragemanager.model.ProductUpdateModel;
 import hu.webler.weblerstoragemanager.value.Category;
 import hu.webler.weblerstoragemanager.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,59 +19,38 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/products")
-    public ResponseEntity<Product> createProduct(@RequestBody ProductCreateModel createModel) {
-        Product product = productService.createProduct(createModel);
-        return ResponseEntity.status(200).body(product);
+    public ResponseEntity<ProductModel> createProduct(@RequestBody ProductCreateModel createModel) {
+        return ResponseEntity.status(201).body(productService.createProduct(createModel));
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateModel updateModel) {
-        Product updatedProduct = productService.updateProduct(id, updateModel);
-        if (updatedProduct != null) {
-            return ResponseEntity.status(200).body(updatedProduct);
-        } else {
-            return ResponseEntity.status(404).body(null);
-        }
+    public ResponseEntity<ProductModel> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateModel updateModel) {
+       return ResponseEntity.status(200).body(productService.updateProduct(id, updateModel));
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
-        return ResponseEntity.status(200).body(products);
+    public ResponseEntity<List<ProductModel>> getAllProducts() {
+        return ResponseEntity.status(200).body(productService.getAllProduct());
     }
 
     @GetMapping("/products/category/{category}")
-    public ResponseEntity<List<Product>> getAllByCategory(@PathVariable Category category) {
-        List<Product> products = productService.getAllByCategory(category);
-        List<Product> filteredProducts = products.stream()
-                .filter(product -> product.getCategory().equals(category))
-                .toList();
-        return ResponseEntity.status(200).body(filteredProducts);
+    public ResponseEntity<List<ProductModel>> getAllByCategory(@PathVariable Category category) {
+        return ResponseEntity.status(200).body(productService.getAllByCategory(category));
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        Product product = productService.getProductById(id);
-        if (product != null) {
-            return ResponseEntity.status(200).body(product);
-        } else {
-            return ResponseEntity.status(404).body(null);
-        }
+    public ResponseEntity<ProductModel> getProductByIdAndHasItemOnStock(@PathVariable Long id) {
+        return ResponseEntity.status(200).body(productService.getProductById(id));
     }
 
     @GetMapping("/products/by-product-number/{productNumber}")
-    public ResponseEntity<Product> getProductByProductNumber(@PathVariable String productNumber) {
-        Product product = productService.getProductByProductNumber(productNumber);
-        if (product != null) {
-            return ResponseEntity.status(200).body(product);
-        } else {
-            return ResponseEntity.status(404).body(null);
-        }
+    public ResponseEntity<ProductModel> getProductByProductNumber(@PathVariable String productNumber) {
+       return ResponseEntity.status(200).body(productService.getProductByProductNumber(productNumber));
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
+        productService.deleteProductById(id);
         return ResponseEntity.status(204).body(null);
     }
 }

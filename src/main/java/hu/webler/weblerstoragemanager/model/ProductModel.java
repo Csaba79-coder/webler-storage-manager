@@ -10,7 +10,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCreateModel {
+public class ProductModel {
+
+    private Long id;
 
     private String productNumber;
 
@@ -19,4 +21,6 @@ public class ProductCreateModel {
     private Category category;
 
     private String description;
+
+    private int quantity = 0;
 }
