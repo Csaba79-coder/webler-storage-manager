@@ -1,4 +1,4 @@
-package hu.webler.weblerstoragemanager.repository;
+package hu.webler.weblerstoragemanager.persistence;
 
 import hu.webler.weblerstoragemanager.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

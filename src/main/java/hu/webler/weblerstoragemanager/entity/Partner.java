@@ -1,5 +1,6 @@
 package hu.webler.weblerstoragemanager.entity;
 
+import hu.webler.weblerstoragemanager.entity.base.Identifier;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,10 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Partner {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long partnerId;
+public class Partner extends Identifier {
 
     @Column(unique = true)
     private String partnerName;

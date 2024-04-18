@@ -6,7 +6,7 @@ import hu.webler.weblerstoragemanager.model.ProductModel;
 import hu.webler.weblerstoragemanager.model.ProductUpdateModel;
 import hu.webler.weblerstoragemanager.util.Mapper;
 import hu.webler.weblerstoragemanager.value.Category;
-import hu.webler.weblerstoragemanager.repository.ProductRepository;
+import hu.webler.weblerstoragemanager.persistence.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -86,4 +86,3 @@ public class ProductService {
         }
     }
 }
-

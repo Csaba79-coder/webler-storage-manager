@@ -23,8 +23,8 @@ public class SupplierOrder extends Order {
 
     @ManyToMany
     @JoinTable(
-            name = "order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
+            name = "supplier_order_product",
+            joinColumns = @JoinColumn(name = "supplier_order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Product> products;
