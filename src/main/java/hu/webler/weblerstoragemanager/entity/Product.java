@@ -1,5 +1,6 @@
 package hu.webler.weblerstoragemanager.entity;
 
+import hu.webler.weblerstoragemanager.entity.base.Identifier;
 import hu.webler.weblerstoragemanager.value.Category;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product extends Identifier {
 
     @Column(unique = true)
     private String productNumber;

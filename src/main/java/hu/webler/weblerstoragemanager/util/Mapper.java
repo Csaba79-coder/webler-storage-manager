@@ -1,12 +1,13 @@
 package hu.webler.weblerstoragemanager.util;
 
+import hu.webler.weblerstoragemanager.entity.Partner;
 import hu.webler.weblerstoragemanager.entity.Product;
-import hu.webler.weblerstoragemanager.model.ProductCreateModel;
-import hu.webler.weblerstoragemanager.model.ProductModel;
+import hu.webler.weblerstoragemanager.entity.SupplierOrder;
+import hu.webler.weblerstoragemanager.model.*;
 
 public class Mapper {
 
-    public static ProductModel mapProductEntityToProductModel(Product entity) {
+    public static ProductModel mapProductEntityToProductModel(Product entity){
         ProductModel model = new ProductModel();
         model.setId(entity.getId());
         model.setProductNumber(entity.getProductNumber());
@@ -26,6 +27,36 @@ public class Mapper {
         return entity;
     }
 
+    public static PartnerModel mapPartnerEntityToPartnerModel(Partner entity){
+        PartnerModel model = new PartnerModel();
+        model.setId(entity.getId());
+        model.setPartnerName(entity.getPartnerName());
+        model.setPartnerAddress(entity.getPartnerAddress());
+        return model;
+    }
+
+    public static Partner mapPartnerCreateModelToPartnerEntity(PartnerCreateModel model){
+        Partner entity = new Partner();
+        entity.setPartnerName(model.getPartnerName());
+        entity.setPartnerAddress(model.getPartnerAddress());
+        return entity;
+    }
+
+    public static SupplierOrderModel mapSupplierOrderEntityToSupplierOrderModel(SupplierOrder entity){
+        SupplierOrderModel model = new SupplierOrderModel();
+        model.setId(entity.getId());
+        model.setPartner(entity.getPartner());
+        model.setArrivalDate(entity.getArrivalDate());
+        model.setProducts(entity.getProducts());
+        return model;
+    }
+
+    public static SupplierOrder mapSupplierOrderCreateModelToSupplierOrderEntity(SupplierOrderCreateModel model){
+        SupplierOrder entity = new SupplierOrder();
+        entity.setPartner(model.getPartner());
+        entity.setProducts(model.getProducts());
+        return entity;
+    }
     private Mapper(){
 
     }
