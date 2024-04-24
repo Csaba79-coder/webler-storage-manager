@@ -1,18 +1,18 @@
 package hu.webler.weblerstoragemanager.entity;
 
+import hu.webler.weblerstoragemanager.entity.base.Identifier;
 import hu.webler.weblerstoragemanager.value.Category;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Product extends Identifier {
 
     @Column(unique = true)
     private String productNumber;
@@ -26,4 +26,7 @@ public class Product {
     private String description;
 
     private int quantity = 0;
+
+    @ManyToMany(mappedBy = "products")
+    private List<SupplierOrder> supplierOrders;
 }
