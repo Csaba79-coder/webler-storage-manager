@@ -6,15 +6,13 @@ import hu.webler.weblerstoragemanager.model.ProductModel;
 import hu.webler.weblerstoragemanager.model.ProductUpdateModel;
 import hu.webler.weblerstoragemanager.util.Mapper;
 import hu.webler.weblerstoragemanager.value.Category;
-import hu.webler.weblerstoragemanager.repository.ProductRepository;
+import hu.webler.weblerstoragemanager.persistence.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -36,10 +34,16 @@ public class ProductService {
                     log.info(message);
                     return new NoSuchElementException(message);
                 });
-        existingProduct.setProductName(updateModel.getProductName());
-        existingProduct.setDescription(updateModel.getDescription());
-        return Mapper.mapProductEntityToProductModel(productRepository.save(existingProduct));
+        String updateProductName = updateModel.getProductName();
+        if (updateProductName != null) {
+            existingProduct.setProductName(updateProductName);
         }
+        String updateDescription = updateModel.getDescription();
+        if (updateDescription != null) {
+            existingProduct.setDescription(updateModel.getDescription());
+        }
+        return Mapper.mapProductEntityToProductModel(productRepository.save(existingProduct));
+    }
 
     public List<ProductModel> getAllProduct() {
         return productRepository.findAll()
@@ -69,7 +73,7 @@ public class ProductService {
         return Mapper.mapProductEntityToProductModel(productRepository
                 .findByProductNumberAndQuantityGreaterThan(productNumber,0)
                 .orElseThrow(() ->{
-                    String message = String.format("Product with id: %s not found", productNumber);
+                    String message = String.format("Product with product number: %s not found", productNumber);
                     log.info(message);
                     return new NoSuchElementException(message);
                 }));
@@ -86,4 +90,3 @@ public class ProductService {
         }
     }
 }
-

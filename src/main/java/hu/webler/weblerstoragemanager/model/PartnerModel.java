@@ -1,7 +1,6 @@
 package hu.webler.weblerstoragemanager.model;
 
 import hu.webler.weblerstoragemanager.entity.SupplierOrder;
-import hu.webler.weblerstoragemanager.value.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,17 +12,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductModel {
+public class PartnerModel {
 
     private Long id;
 
-    private String productNumber;
+    private String partnerName;
 
-    private String productName;
-
-    private Category category;
-
-    private String description;
-
-    private int quantity = 0;
+    private String partnerAddress;
 }
